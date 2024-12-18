@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Telegram Mini App - hCaptcha Verification</title>
+  <script src="https://js.hcaptcha.com/1/api.js" async defer></script> <!-- Подключаем hCaptcha API -->
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 20px;
+    }
+    #captcha {
+      margin: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Human Verification</h1>
+  <p>Please verify you are human by completing the captcha below:</p>
+  
+  <div id="captcha">
+    <!-- hCaptcha виджет с вашим site key -->
+    <div class="h-captcha" data-sitekey="6374c936-7d88-4fa0-9fa4-ab9ea2104e8c"></div>
+  </div>
+  
+  <button onclick="submitVerification()">Submit</button>
+
+  <script>
+    function submitVerification() {
+      const response = hcaptcha.getResponse();
+      if (response.length === 0) {
+        alert("Please complete the captcha");
+      } else {
+        alert("Captcha completed. Verifying...");
+        // Здесь вы можете отправить ответ на сервер для проверки
+        // После успешной проверки можно отправить пользователя в нужную группу.
+      }
+    }
+  </script>
+</body>
+</html>
